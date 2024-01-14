@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Api::EventsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create]
     
     def new
@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     end
     
     def create
-        @event = event.new(event_params)
+        @event = Event.new(event_params)
         if @event.save
             render json: @event, status: :created
         else
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     end
     
     def index
-        load_collection 
+        @events = Event.all 
         render json: @events, status: :ok
     end
 
@@ -25,11 +25,7 @@ class EventsController < ApplicationController
     end
     
     private
-
-        def load_collection
-            @events = Event.all
-        end
-
+    
         def event_params
             params.require(:event).permit(:name, :description, :location, :start_time, :end_time, :ticket_price)
         end

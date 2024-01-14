@@ -1,4 +1,4 @@
-class TicketsController < ApplicationController
+class Api::TicketsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create]
     
     def new
@@ -7,7 +7,6 @@ class TicketsController < ApplicationController
     
     def create
         @ticket = Ticket.new(ticket_params)
-        
         if @ticket.save
             render json: @ticket, status: :created
         else

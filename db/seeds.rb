@@ -1,5 +1,5 @@
-User.create(email: 'usuario1@example.com', password: 'password123', password_confirmation: 'password123')
-User.create(email: 'usuario2@example.com', password: 'password456', password_confirmation: 'password456')
+User.create(email: 'user1@example.com', password: 'password123', password_confirmation: 'password123', name:"user 1")
+User.create(email: 'user2@example.com', password: 'password456', password_confirmation: 'password456', name:"user 2")
 
 # Create events
 Event.create(name: "Ruby conf",
@@ -7,14 +7,16 @@ description: "Ruby conferences event",
 location: "San Diego",
 start_time: DateTime.current+ 1.month,
 end_time: DateTime.current+ 1.month + 3.days,
-ticket_price: 300.5 )
+ticket_price: 300.5,
+max_tickets: 5)
 
 Event.create(name: "Comic con",
 description: "Comic con event",
 location: "Bogota",
 start_time: DateTime.current+ 1.month,
 end_time: DateTime.current+ 1.month + 3.days,
-ticket_price: 15.0 )
+ticket_price: 15.0,
+max_tickets: 4)
 
 
 

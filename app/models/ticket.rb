@@ -1,6 +1,5 @@
 class Ticket < ApplicationRecord
     belongs_to :event
-    belongs_to :user
 
     validates :total_price, numericality: { greater_than: 0 }
     validates :quantity, numericality: { greater_than: 0, only_integer: true }

@@ -1,11 +1,8 @@
-class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
-
-    def handle_unverified_request
-      respond_to do |format|
-        format.html { super }
-        format.json { render json: { error: 'Invalid authenticity token' }, status: :unprocessable_entity }
-      end
+class ApplicationController < ActionController::API
+    before_action :configure_permitted_parameters, if: :devise_controller?
+    protected
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[name])
     end
-  
 end

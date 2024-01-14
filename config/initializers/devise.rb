@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '330c94be86b9c6327d28896a484ca0d6f161ca501ba2f06868c68699a1e76db17278ac12af046e86fe718dfb6fccbcfde4c27a4f461cd8c3c83cac937308b1b5'
+  # config.secret_key = '9127f648d8baf79f86ee3cb3555d70657aba4cd15aa8f4e6fdc684b2da2e396e1cd11d3e8596a4147d1394d88f4a1987bd164b42abbb13969a5df6cbd61f6726'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '3e05be216dc5ddcf16ae360922c45e4eadfc52ffdeef40870d2a431f0fca282cfbf7e14ab82fcf3aebe968a34ab34e3615fc1d8fc5d5c132fce90ad189d04a84'
+  # config.pepper = '0f1a39e73df0cf57b3b51897e063a9fd5e737710b901c153d21c652c80b3c0d3303eaa49b0a697bdccf023334e6f652863365651e3bdb2cfd19fcca18b469c46'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -304,10 +304,22 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
+  config.navigational_formats = []
 
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.jwt do |jwt|
+      jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+      jwt.dispatch_requests = [
+        ['POST', %r{^/login$}]
+      ]
+      jwt.revocation_requests = [
+        ['DELETE', %r{^/logout$}]
+      ]
+      jwt.expiration_time = 30.minutes.to_i
+  end
 end
