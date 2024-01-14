@@ -18,6 +18,8 @@ ticket_price).  **PUT    /api/events/:id**
 
 For creation or update operations, you must be authenticated in the system.
 
+For the bonus 
+
 
 ### Run the application
 
@@ -58,3 +60,7 @@ This application run with ruby "3.2.2" and "rails 7.1.2" the database is sqlite3
         }
         }'
 Once authenticated, yoy can perform creation and updating operations.
+
+## BONUS
+1) The Devise gem was used for login authentication for the data modification operations.
+2) The max_tickets attribute was added as a limit for tickets per event, and a callback was used to verify that the ticket can be created."
