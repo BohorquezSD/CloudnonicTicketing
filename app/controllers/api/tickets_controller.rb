@@ -15,6 +15,9 @@ class Api::TicketsController < ApplicationController
     def show
         @ticket = Ticket.find(params[:id])
         render json: @ticket, status: :ok
+    rescue StandardError => e
+        Rails.logger(e)
+        render json: { error: "Ticket not found" }, status: :not_found
     end
     
     def by_event
@@ -34,6 +37,8 @@ class Api::TicketsController < ApplicationController
     private
     
       def ticket_params
-        params.require(:ticket).permit(:event_id, :buyer_name, :quantity, :total_price)
+        params.require(:ticket).permit(:event_id, :buyer_name, :quantity)
       end
+
+      
 end

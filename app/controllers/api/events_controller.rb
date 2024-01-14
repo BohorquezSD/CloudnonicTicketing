@@ -18,6 +18,9 @@ class Api::EventsController < ApplicationController
     def show
         @event = Event.find(params[:id])
         render json: @event, status: :ok
+    rescue StandardError => e
+        Rails.logger(e)
+        render json: { error: "Event not found" }, status: :not_found
     end
 
     def update

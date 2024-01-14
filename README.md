@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Cloudnonic Event Ticke0ng API
 
-Things you may want to cover:
+This project is an API for managing events and tickets. The following operations can be performed:
 
-* Ruby version
+• Login.  POST   /login
+• Logout.  DELETE   /logout
+• Create a new event.  POST   /api/events
+• Retrieve a list of all events.  GET /api/events
+• Retrieve a single event by its ID. GET /api/events/{event_id}
+• Create a new ticket purchase. POST /api/ticket
+• Retrieve ticket purchase details by ticket ID. GET /api/ticket/{ticket_id}
+• Retrieve a list of ticket purchases for a specific event. GET /api/ticket/by_event{event_id}
+• Update event details (name, description, location, start_time, end_time, 
+ticket_price). GET /api/ticket/by_event{event_id} PUT    /api/events/:id
+• Update ticket purchase details (buyer_name, quan7ty). PUT    /api/tickets/:id *The total price is automatically calculated
 
-* System dependencies
+For creation or update operations, you must be authenticated in the system.
 
-* Configuration
 
-* Database creation
+### Run the application
 
-* Database initialization
+    This application run with ruby "3.2.2" and "rails 7.1.2" the database is sqlite3
 
-* How to run the test suite
+    You must have installed ruby in version 3.2.2
 
-* Services (job queues, cache servers, search engines, etc.)
+    on the root of the app run
 
-* Deployment instructions
+        bundle install
 
-* ...
+
+    after install the required gems configure the database with
+
+        rails db:prepare
+        rails db:seed
+    
+    you can run the app with
+
+        rails server
+    
+    for check the endpoint tests created with rspec run
+
+        rails db:create db:migrate RAILS_ENV=test
+        bundle exec rspec
+    
+    for analize the code run
+
+        bundle exec rubocop
+
+    finaly for test the endpoints you can use postmant or use curl 
+
+    there is an example of login request using curl
+
+        curl --location 'http://localhost:3000/login' \
+        --header 'Content-Type: application/json' \
+        --header 'Cookie: _cloudnonic_ticketing_session=3gNDDyZ8xyCfA2QA%2FGrpmxe%2FvpvtVgCTiGSdn2dOVFxmTbuCsa2sG8vEbkUKRG%2FNb%2F%2Bnl6WuvpM8SoIV0p4B%2FrVLqJveUhd%2B94x09%2B7POp8LurVHK%2FyyvVRS7SpBxNv4qqigwuofARXF6I9nVOj9B88z5mnrSZ1%2B2h%2FMs1OGDv%2FM38SfjxBp6oayqexIZgy3nyrpBaLrtZdlI0RlEYgOdqOqvSTWzzz2GREbJqqMeTFSskAzzjbuefm3tzTVS%2F1pawsromIWfa1hbp4segvBpBCK4PHa4DU9YHUFk%2BEsxArFUjdTAg%3D%3D--71qbd56g67122NyW--MCbPHBSBJf3jHtuMVA30dw%3D%3D' \
+        --data-raw '{
+        "user": {
+            "email": "user1@example.com",
+            "password": "password123"
+        }
+        }'
