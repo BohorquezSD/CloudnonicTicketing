@@ -1,5 +1,5 @@
 class Api::EventsController < ApplicationController
-    before_action :authenticate_user!, only: [:create]
+    before_action :authenticate_user!, only: [:create, :update]
 
     def create
         @event = Event.new(event_params)
