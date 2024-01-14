@@ -35,7 +35,7 @@ This application run with ruby "3.2.2" and "rails 7.1.2" the database is sqlite3
         rails db:prepare
         rails db:seed
     
-3.Run the app with
+3.Run the app (localhost:3000) with
 
         rails server
     
@@ -63,4 +63,7 @@ Once authenticated, yoy can perform creation and updating operations.
 
 ## BONUS
 1) The Devise gem was used for login authentication for the data modification operations.
-2) The max_tickets attribute was added as a limit for tickets per event, and a callback was used to verify that the ticket can be created."
+2) The max_tickets attribute was added as a limit for tickets per event, and a callback was used to verify that the ticket can be created.
+
+## Future developments:
+As possible improvements in the future, pagination of records, log handling, and deletion methods can be added.
