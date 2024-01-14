@@ -1,6 +1,6 @@
 # README
 
-## Cloudnonic Event Ticke0ng API
+## Cloudnonic Event Ticketing API
 
 This project is an API for managing events and tickets. The following operations can be performed:
 
@@ -14,7 +14,7 @@ This project is an API for managing events and tickets. The following operations
 - Retrieve a list of ticket purchases for a specific event. **GET /api/ticket/by_event{event_id}**
 - Update event details (name, description, location, start_time, end_time, 
 ticket_price).  **PUT    /api/events/:id**
-- Update ticket purchase details (buyer_name, quan7ty). **PUT    /api/tickets/:id *The total price is automatically calculated**
+- Update ticket purchase details (buyer_name, quan7ty). **PUT    /api/tickets/:id  The total price is automatically calculated**
 
 For creation or update operations, you must be authenticated in the system.
 
