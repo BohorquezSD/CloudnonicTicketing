@@ -18,8 +18,6 @@ ticket_price).  **PUT    /api/events/:id**
 
 For creation or update operations, you must be authenticated in the system.
 
-For the bonus 
-
 
 ### Run the application
 
