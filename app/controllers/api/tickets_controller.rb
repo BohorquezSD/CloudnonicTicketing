@@ -1,9 +1,6 @@
 class Api::TicketsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [ :create]
     
-    def new
-        @ticket = Ticket.new
-    end
     
     def create
         @ticket = Ticket.new(ticket_params)
@@ -17,11 +14,21 @@ class Api::TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
+        render json: @ticket, status: :ok
     end
     
     def by_event
-        @tickets = Tickets.where(event_id: params[:event_id])
-        render json: @tickets
+        @tickets = Ticket.where(event_id: params[:event_id])
+        render json: @tickets, status: :ok
+    end
+
+    def update
+        @ticket = Ticket.find(params[:id])
+        if @ticket.update(ticket_params)
+            render json: @ticket, status: :ok
+        else
+            render json: @ticket.errors, status: :unprocessable_entity
+        end
     end
 
     private
