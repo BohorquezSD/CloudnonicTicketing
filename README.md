@@ -25,30 +25,30 @@ This application run with ruby "3.2.2" and "rails 7.1.2" the database is sqlite3
 
 1. In the root of the app run
 
-        `bundle install`
+        bundle install
 
 
-2. after install the required gems configure the database with
+2. Install the required gems configure the database with
 
-        `rails db:prepare
-        rails db:seed`
+        rails db:prepare
+        rails db:seed
     
-3. you can run the app with
+3.Run the app with
 
-        `rails server`
+        rails server
     
-4. for check the endpoint tests created with rspec run
+4. Check the endpoints tests created with rspec 
 
-        `rails db:create db:migrate RAILS_ENV=test
-        bundle exec rspec`
+        rails db:create db:migrate RAILS_ENV=test
+        bundle exec rspec
     
-5. for analize the code run
+5. Analize the code run
 
-        `bundle exec rubocop`
+        bundle exec rubocop
 
-6. finaly for test the endpoints you can use postmant or use curl, there is an example of login request using curl
+6. Test the endpoints. You can use postman or use curl, there is an example of login request using curl
 
-        `curl --location 'http://localhost:3000/login' \
+        curl --location 'http://localhost:3000/login' \
         --header 'Content-Type: application/json' \
         --header 'Cookie: _cloudnonic_ticketing_session=3gNDDyZ8xyCfA2QA%2FGrpmxe%2FvpvtVgCTiGSdn2dOVFxmTbuCsa2sG8vEbkUKRG%2FNb%2F%2Bnl6WuvpM8SoIV0p4B%2FrVLqJveUhd%2B94x09%2B7POp8LurVHK%2FyyvVRS7SpBxNv4qqigwuofARXF6I9nVOj9B88z5mnrSZ1%2B2h%2FMs1OGDv%2FM38SfjxBp6oayqexIZgy3nyrpBaLrtZdlI0RlEYgOdqOqvSTWzzz2GREbJqqMeTFSskAzzjbuefm3tzTVS%2F1pawsromIWfa1hbp4segvBpBCK4PHa4DU9YHUFk%2BEsxArFUjdTAg%3D%3D--71qbd56g67122NyW--MCbPHBSBJf3jHtuMVA30dw%3D%3D' \
         --data-raw '{
@@ -56,4 +56,5 @@ This application run with ruby "3.2.2" and "rails 7.1.2" the database is sqlite3
             "email": "user1@example.com",
             "password": "password123"
         }
-        }'`
+        }'
+Once authenticated, yoy can perform creation and updating operations.
