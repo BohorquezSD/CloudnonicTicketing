@@ -9,9 +9,9 @@ This project is an API for managing events and tickets. The following operations
 - Create a new event.  **POST   /api/events**
 - Retrieve a list of all events.  **GET /api/events**
 - Retrieve a single event by its ID. **GET /api/events/{event_id}**
-- Create a new ticket purchase. **POST /api/ticket**
-- Retrieve ticket purchase details by ticket ID.**GET /api/ticket/{ticket_id}**
-- Retrieve a list of ticket purchases for a specific event. **GET /api/ticket/by_event{event_id}**
+- Create a new ticket purchase. **POST /api/tickets**
+- Retrieve ticket purchase details by ticket ID.**GET /api/tickets/{ticket_id}**
+- Retrieve a list of ticket purchases for a specific event. **GET /api/tickets/by_event{event_id}**
 - Update event details (name, description, location, start_time, end_time, 
 ticket_price).  **PUT    /api/events/:id**
 - Update ticket purchase details (buyer_name, quan7ty). **PUT    /api/tickets/:id  The total price is automatically calculated**
